@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
@@ -47,6 +48,8 @@ namespace Tanks.Complete
         private bool m_IsCharging = false;          // Are we currently charging the shot
         private float m_BaseMinLaunchForce;         // The initial value of m_MinLaunchForce
         private float m_ShotCooldownTimer;          // The timer counting down before a shot is allowed again
+
+        List<int> _aa;
         
         private void OnEnable()
         {
