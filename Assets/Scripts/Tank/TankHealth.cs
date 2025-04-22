@@ -3,8 +3,14 @@ using UnityEngine.UI;
 
 namespace Tanks.Complete
 {
-    public class TankHealth : MonoBehaviour
+    public class TankHealth : MonoBehaviour, IDamage
     {
+        //Interface
+        public float CurrentHealth { get; }
+        public float MaxHealth { get; }
+        public bool hasShield { get; }
+        public bool IsDead { get; }
+        
         public float m_StartingHealth = 100f;               // The amount of health each tank starts with.
         public Slider m_Slider;                             // The slider to represent how much health the tank currently has.
         public Image m_FillImage;                           // The image component of the slider.
