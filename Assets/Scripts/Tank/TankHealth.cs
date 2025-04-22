@@ -121,7 +121,7 @@ namespace Tanks.Complete
         private void SetHealthUI ()
         {
             // Set the slider's value appropriately.
-            Slider1.value = m_CurrentHealth;
+            m_Slider.value = m_CurrentHealth;
 
             // Interpolate the color of the bar between the choosen colours based on the current percentage of the starting health.
             m_FillImage.color = Color.Lerp (m_ZeroHealthColor, m_FullHealthColor, m_CurrentHealth / m_StartingHealth);
