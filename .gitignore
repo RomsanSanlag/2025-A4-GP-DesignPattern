@@ -83,3 +83,5 @@ Assets/ThirdParty/Toon Enchanted Meadow/Textures/TEM_Atlas_Vegetation_1A_Source.
 Assets/ThirdParty/Toon Enchanted Meadow/Textures/TEM_Atlas_Vegetation_1B_Source.psd
 Assets/ThirdParty/Toon Enchanted Meadow/Textures/TEM_Atlas_Vegetation_1B_Source.psd.meta
 .utmp/
+Packages/com.singularitygroup.hotreload
+Packages/packages-lock.json
