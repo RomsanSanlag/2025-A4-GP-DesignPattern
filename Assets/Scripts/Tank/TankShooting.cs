@@ -102,11 +102,6 @@ namespace Tanks.Complete
             }
         }
 
-        void LateUpdate()
-        {
-            throw new NotImplementedException();
-        }
-
         /// <summary>
         /// Used by AI to start charging
         /// </summary>
@@ -118,10 +113,6 @@ namespace Tanks.Complete
             // ... reset the fired flag and reset the launch force.
             m_Fired = false;
             m_CurrentLaunchForce = m_MinLaunchForce;
-
-            // Change the clip to the charging clip and start it playing.
-            m_ShootingAudio.clip = m_ChargingClip;
-            m_ShootingAudio.Play ();
 
             _charging = StartCoroutine(ChargingRoutine());
             IEnumerator ChargingRoutine()
@@ -145,7 +136,8 @@ namespace Tanks.Complete
                         StopCharging();
                         yield break;
                     }
-                    
+
+                    yield return null;
                 }
                 yield break;
             }
@@ -154,23 +146,23 @@ namespace Tanks.Complete
 
         public void StopCharging()
         {
-            if (_charging != null)
+            if (_charging == null) return;
+            
+            StopCoroutine(_charging);
+            _charging = null;
+            
+            Fire();
+            m_ShotCooldownTimer = 1f;
+            
+            IEnumerator Cooldown()
             {
-                StopCoroutine(_charging);
-                _charging = null;
-                Fire();
-                m_ShotCooldownTimer = 1f;
-                
-                IEnumerator Cooldown()
-                {
-                    _canFire = false;
-                    yield return new WaitForSeconds(m_ShotCooldownTimer);
-                    _canFire = true;
-                }
-                
-                // The slider should have a default value of the minimum launch force.
-                m_AimSlider.value = m_BaseMinLaunchForce;
+                _canFire = false;
+                yield return new WaitForSeconds(m_ShotCooldownTimer);
+                _canFire = true;
             }
+            
+            // The slider should have a default value of the minimum launch force.
+            m_AimSlider.value = m_BaseMinLaunchForce;
         }
         
         void ComputerUpdate()

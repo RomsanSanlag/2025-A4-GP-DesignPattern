@@ -30,11 +30,11 @@ public class PlayerBrain : MonoBehaviour
 
     void StopShoot(InputAction.CallbackContext obj)
     {
-        _shooting.StartCharging();
+        _shooting.StopCharging();
     }
 
     void StartShoot(InputAction.CallbackContext obj)
     {
-        _shooting.StopCharging();
+        _shooting.StartCharging();
     }
 }
