@@ -152,8 +152,9 @@ namespace Tanks.Complete
             _charging = null;
             
             Fire();
-            m_ShotCooldownTimer = 1f;
+            m_ShotCooldownTimer = 10f;
             
+            StartCoroutine(Cooldown());
             IEnumerator Cooldown()
             {
                 _canFire = false;
