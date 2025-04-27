@@ -8,7 +8,7 @@ using Update = UnityEngine.PlayerLoop.Update;
 
 namespace Tanks.Complete
 {
-    public class TankHealth : MonoBehaviour, IDamage
+    public class TankHealth : MonoBehaviour, IDamage, IHealth
     {
         public float m_StartingHealth = 100f;               // The amount of health each tank starts with.
         public GameObject m_ExplosionPrefab;                // A prefab that will be instantiated in Awake, then used whenever the tank dies.
